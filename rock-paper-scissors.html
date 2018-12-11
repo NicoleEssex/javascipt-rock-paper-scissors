@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Rock Paper Scissors</title>
+</head>
+<body>
+    <header id="rock-paper-scissors">
+        <h1>Rock Paper Scissors</h1>
+    </header>
+    <!-- HARD-CODED VALUES WITHIN HTML -->
+    <main id="maid-section"> HARD-CODED-VALUES
+        <div>
+            <span>User Choice: </span><span>r</span>
+            <span> ----------- </span>
+            <span>User Wins: </span><span>0</span>
+        </div>
+        <br>
+        <div>
+            <span>Computer Choice: </span><span>r</span>
+            <span> ----------- </span>
+            <span>Computer Wins: </span><span>0</span>
+        </div>
+    </main>
+<br>
+<br>
+    <!-- DYNAMICALLY CREATED VALUES USING JAVASCRIPT -->
+    <main id="maid-section"> DYNAMICALLY-GENERATED-VALUES
+            <div>
+                <span>User Choice: </span><span id="user-choice"></span>
+                <span> ----------- </span>
+                <span>User Wins: </span><span id="user-score"></span>
+            </div>
+            <br>
+            <div>
+                <span>Computer Choice: </span><span id="computer-choice"></span>
+                <span> ----------- </span>
+                <span>Computer Wins: </span><span id="computer-score"></span>
+            </div>
+        </main>
+
+    <script type="text/javascript">
+    //---------------------GLOBAL VARIABLES------------------------------------------
+        var elUserChoice = document.getElementById("user-choice");
+        var elComputerChoice = document.getElementById("computer-choice");
+        var elUserScore = document.getElementById("user-score");
+        var elComputerScore = document.getElementById("computer-score");
+        var userChoice = "";
+        var computerChoice = ['r', 'p', 's'];
+        var userWins = 0;
+        var computerWins = 0;
+
+    //TO DO:
+    //create variable to hold possible choices for computer
+    //create variable to hold user win counter
+    //create variable to hold computer win counter
+    //create keyboard event to capture user choice
+    //create random selection from computer choice array
+    //alert user when they press proper key options when they press a key not allowed for
+
+    document.onkeyup= function(event){
+        console.log(event.key);
+        userChoice = (event.key);
+        console.log(userChoice);
+        
+    }    </script>
+</body>
+</html>
