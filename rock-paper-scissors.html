@@ -44,61 +44,67 @@
     <script type="text/javascript">
     
     //---------------------GLOBAL VARIABLES------------------------------------------
+        //hooks into each DOM element needed to display data
         var elUserChoice = document.getElementById("user-choice");
         var elComputerChoice = document.getElementById("computer-choice");
         var elUserScore = document.getElementById("user-score");
         var elComputerScore = document.getElementById("computer-score");
         
-        //create variable to hold possible choices for computer
+        //variable to hold possible choices for computer
         var computerChoices = ['r', 'p', 's'];
 
-        //create variable to hold user win counter
+        //variable to hold user win counter
         var userWins = 0;
 
-        //create variable to hold computer win counter 
-        var computerWins = 0;
+        //variable to hold computer win counter 
+        var computerWins = 0;    
+         
+    //----------------------------TO DO-------------------------------------------------
+    //fix computer choice from showing up on document load before user choice
+    //fix computer from guessing if user presses non-allowed key
+    //fix alert for pressing correct key from displaying on document load
+    //fix score increment to work on first round, only works after first round
+    //fix alert for tie to run only after first tie, not on document load
 
-    //TO DO:
-    //alert user when they press proper key options when they press a key not allowed for
-    //compare user choice to computer choice using logic and comparison operators before displaying to DOM
-    
-    
-    
-    
 
-    //create keyboard event to capture user choice
+    //-----------------------------JAVASCRIPT-------------------------------------------
+    //keyboard event to capture user choice
     document.onkeyup = function(event){
+        var userChoice = event.key;
         console.log(event.key + " User Guess");
-         var userChoice = event.key;
-    //display user choice in DOM
-         elUserChoice.innerHTML = userChoice;
 
-    //create random selection from computer choice array
+    //alert user when they press proper key options when they press a key not allowed for
+        if ((userChoice !== "r") && (event.key !== "s") && (event.key !== "p")){
+             alert("please choose either 'r' or 's' or 'p'");
+        };
+    //random selection from computer choice array
         var computerGuess = computerChoices[Math.floor(Math.random() * (computerChoices.length))];
         console.log(computerGuess + " Computer Guess");
+    
+    //display user choice in DOM
+        elUserChoice.innerHTML = userChoice;
 
     //display computer guess to DOM         
         elComputerChoice.innerHTML = computerGuess;
     
-    //display userWins to DOM    
+    //display initial user score to DOM    
         elUserScore.innerHTML = userWins;
-    
-    //increment user wins counter
-        var incrementUserWins = (userWins++);
-        incrementUserWins;
-        console.log(incrementUserWins + " incrementUserWins");
-          
-    //display computer wins to DOM    
+
+    //display initial computer wins to DOM    
         elComputerScore.innerHTML = computerWins;
 
-    //increment computer wins counter
-        var incrementComputerWins = (computerWins++);
-        computerWins;
-        console.log(incrementComputerWins + " incrementComputerWins");
+    //compare user choice to computer choice using logic and comparison operators before displaying to DOM
+        if ((userChoice === "r" && computerGuess === "s") || (userChoice === "p" && computerGuess === "r") || (userChoice === "s" && computerGuess === "p")) {
+            //increment user wins score
+            userWins++;
+        } else  if ((userChoice === "s" && computerGuess === "r") || (userChoice === "p" && computerGuess === "s") || (userChoice ==="r" && computerGuess === "p")){
+            //increment computer wins score
+            computerWins++;
+        } else {
+            // alert("It's a tie, try again");
+        }
+            
     }    
-
-        
-
     </script>
 </body>
 </html>
